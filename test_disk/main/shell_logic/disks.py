@@ -10,7 +10,7 @@ def get_all_disks():
     rows = shell_result.stdout.decode('utf-8').split('\n')
 
     for i in range(1, len(rows)-1):
-        print(rows[i])
+        print(rows[i].split())
 
     return all_disks
 
