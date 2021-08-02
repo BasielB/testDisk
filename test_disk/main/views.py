@@ -1,3 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+
+def show_disks(request):
+
+    disks = None
+
+    context = {
+        'disks': disks,
+        'title': 'Диски'
+    }
+
+    return render(request, template_name='main/hello.html', context=context)
