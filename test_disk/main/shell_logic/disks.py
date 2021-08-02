@@ -16,8 +16,6 @@ def get_all_disks():
         if 'disk' in split_row:
             print(split_row)
 
-        print(rows[i].split())
-
     return all_disks
 
 
