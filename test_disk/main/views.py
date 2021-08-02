@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .shell_logic.disks import get_all_disks
+
 
 def show_disks(request):
 
-    disks = None
-
     context = {
-        'disks': disks,
+        'disks': get_all_disks(),
         'title': 'Диски'
     }
 
