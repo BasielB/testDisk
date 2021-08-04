@@ -3,5 +3,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('', show_disks)
+    path('', show_disks),
+    path('mount', mount_disk)
 ]

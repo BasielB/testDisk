@@ -3,31 +3,50 @@ import subprocess
 
 def get_all_disks():
 
-    all_disks = []
+    # all_disks = []
+    #
+    # shell_result = subprocess.run(['lsblk', ], stdout=subprocess.PIPE)
+    # rows = shell_result.stdout.decode('utf-8').split('\n')
+    #
+    # for i in range(1, len(rows)-1):
+    #     split_row = rows[i].split()
+    #
+    #     if 'disk' in split_row:
+    #         name = split_row[0]
+    #         size = split_row[3]
+    #         try:
+    #             mount_point = split_row[6]
+    #         except IndexError:
+    #             mount_point = None
+    #         disk = {
+    #             'name': name,
+    #             'size': size,
+    #             'mount_point': mount_point
+    #         }
+    #
+    #         all_disks.append(disk)
 
-    shell_result = subprocess.run(['lsblk', ], stdout=subprocess.PIPE)
-    rows = shell_result.stdout.decode('utf-8').split('\n')
+    # return all_disks
 
-    for i in range(1, len(rows)-1):
-        split_row = rows[i].split()
+    return [{'name': 'sda',
+             'size': '8G',
+             'mount_point': None},
+            {'name': 'sdb',
+             'size': '4G',
+             'mount_point': None},
+            {'name': 'sdc',
+             'size': '2G',
+             'mount_point': '/'}
+            ]
 
-        if 'disk' in split_row:
-            name = split_row[0]
-            size = split_row[3]
-            try:
-                mount_point = split_row[6]
-            except IndexError:
-                mount_point = None
-            disk = {
-                'name': name,
-                'size': size,
-                'mount_point': mount_point
-            }
 
-            all_disks.append(disk)
+def mount_disk(name: str):
+    subprocess.run(['mkdir', f'/mnt/{name}'])
 
-    return all_disks
+
+def umount_disk(name: str):
+    pass
 
 
 if __name__ == "__main__":
-    print(get_all_disks())
+    mount_disk('sdc_test')
