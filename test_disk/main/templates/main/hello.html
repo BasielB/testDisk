@@ -37,16 +37,16 @@
                             <button type="submit" value="{{ disk.name }}">Format</button>
                         </form>
                         {% if disk.mount_point %}
-                        <form action="umount" method="post">
+                        <form action="{% url 'umount' %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="name" value="{{ disk.name }}">
                             <button type="submit">Umount</button>
                         </form>
                         {% else %}
-                        <form action="mount" method="post">
+                        <form action="{% url 'mount' %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="name" value="{{ disk.name }}">
-                            <button type="submit">Umount</button>
+                            <button type="submit">Mount</button>
                         </form>
                         {% endif %}
                     </td>
