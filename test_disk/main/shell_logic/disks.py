@@ -48,7 +48,7 @@ def mount_disk(name: str):
 
     # subprocess.run(['echo', f'{sudo_password}', '|', 'sudo', '-S', 'mkdir', f'/mnt/{name}'])
     os.system(f'echo {sudo_password}|sudo -S {command_mkdir}')
-    os.system(f'echo {sudo_password}|sudo -S {command_mkdir}')
+    os.system(f'echo {sudo_password}|sudo -S {command_mount}')
 
 
 def umount_disk(name: str):
