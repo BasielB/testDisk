@@ -56,4 +56,4 @@ def umount_disk(name: str):
 
 
 if __name__ == "__main__":
-    mount_disk('sdc_test')
+    mount_disk('sdc')
