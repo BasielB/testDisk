@@ -43,8 +43,10 @@ def get_all_disks():
 
 def mount_disk(name: str):
     sudo_password = 'butovich'
+    command = f'mkdir /mnt/{name}'
 
-    subprocess.run(['echo', f'{sudo_password}', '|', 'sudo', '-S', 'mkdir', f'/mnt/{name}'])
+    # subprocess.run(['echo', f'{sudo_password}', '|', 'sudo', '-S', 'mkdir', f'/mnt/{name}'])
+    os.system(f'echo {sudo_password}|sudo -S {command}')
 
 
 def umount_disk(name: str):
