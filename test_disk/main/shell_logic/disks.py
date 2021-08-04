@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 
 def get_all_disks():
@@ -41,7 +42,9 @@ def get_all_disks():
 
 
 def mount_disk(name: str):
-    subprocess.run(['mkdir', f'/mnt/{name}'])
+    sudo_password = 'butovich'
+
+    subprocess.run(['echo', f'{sudo_password}', '|', 'sudo', '-S', 'mkdir', f'/mnt/{name}'])
 
 
 def umount_disk(name: str):
