@@ -22,7 +22,7 @@ def mount_disk(request):
 
     disks.mount_disk(body['name'])
 
-    return redirect('')
+    return redirect('/')
 
 
 def umount_disk(request):
@@ -32,4 +32,4 @@ def umount_disk(request):
 
     disks.umount_disk(body['name'])
 
-    return redirect('')
+    return redirect('/')
