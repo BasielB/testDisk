@@ -13,7 +13,7 @@ def show_disks(request):
         'title': 'SUPER ULTRA HARD DRIVER MANAGER 3000'
     }
 
-    return render(request, template_name='main/hello.html', context=context)
+    return render(request, template_name='main/drivers.html', context=context)
 
 
 @login_required
