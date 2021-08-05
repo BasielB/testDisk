@@ -29,6 +29,7 @@ def get_all_disks():
 
     return all_disks
 
+    # TEST RETURN
     # return [{'name': 'sda',
     #          'size': '8G',
     #          'mount_point': None},
