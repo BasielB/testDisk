@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 
 from .shell_logic import disks
-import json
+from .request_handler import handler
 
 
 def show_disks(request):
@@ -17,19 +16,26 @@ def show_disks(request):
 
 def mount_disk(request):
 
-    body = request.body.decode('utf-8').split('&')
-    body = {i.split('=')[0]: i.split('=')[1] for i in body}
+    request_body = handler.extract_dict_from_body(request)
 
-    disks.mount_disk(body['name'])
+    disks.mount_disk(request_body['name'])
 
     return redirect('/disks/')
 
 
 def umount_disk(request):
 
-    body = request.body.decode('utf-8').split('&')
-    body = {i.split('=')[0]: i.split('=')[1] for i in body}
+    request_body = handler.extract_dict_from_body(request)
 
-    disks.umount_disk(body['name'])
+    disks.umount_disk(request_body['name'])
+
+    return redirect('/disks/')
+
+
+def format_disk(request):
+
+    request_body = handler.extract_dict_from_body(request)
+
+    disks.format_disk(request_body['name'])
 
     return redirect('/disks/')

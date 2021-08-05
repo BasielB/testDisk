@@ -57,5 +57,12 @@ def umount_disk(name: str):
     os.system(f'echo {sudo_password}|sudo -S {command_umount}')
 
 
+def format_disk(name: str):
+    sudo_password = 'butovich'
+    command_format = f'mkfs /dev/{name}'
+
+    os.system(f'echo {sudo_password}|sudo -S {command_format}|y')
+
+
 if __name__ == "__main__":
     mount_disk('sdc')
