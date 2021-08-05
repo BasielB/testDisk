@@ -1,19 +1,22 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .shell_logic import disks
 from .request_handler import handler
 
 
+@login_required
 def show_disks(request):
 
     context = {
         'disks': disks.get_all_disks(),
-        'title': 'Диски'
+        'title': 'SUPER ULTRA HARD DRIVER MANAGER 3000'
     }
 
     return render(request, template_name='main/hello.html', context=context)
 
 
+@login_required
 def mount_disk(request):
 
     request_body = handler.extract_dict_from_body(request)
@@ -23,6 +26,7 @@ def mount_disk(request):
     return redirect('/disks/')
 
 
+@login_required
 def umount_disk(request):
 
     request_body = handler.extract_dict_from_body(request)
@@ -32,10 +36,17 @@ def umount_disk(request):
     return redirect('/disks/')
 
 
+@login_required
 def format_disk(request):
 
     request_body = handler.extract_dict_from_body(request)
 
     disks.format_disk(request_body['name'])
+
+    return redirect('/disks/')
+
+
+@login_required
+def redirect_to_home_page(request):
 
     return redirect('/disks/')
