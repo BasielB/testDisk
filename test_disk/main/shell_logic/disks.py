@@ -62,10 +62,13 @@ def format_disk(name: str):
     sudo_password = 'butovich'
     command_format = f'mkfs /dev/{name}'
 
-    if os.system(f'echo {sudo_password}|sudo -S {command_format}|y') == 0:
+    if os.system(f'echo {sudo_password}|sudo -S {command_format}') == 0:
         return True
     else:
-        return False
+        if os.system(f'echo {sudo_password}|sudo -S {command_format}|y') == 0:
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":
