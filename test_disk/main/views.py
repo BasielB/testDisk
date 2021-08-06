@@ -41,7 +41,8 @@ def format_disk(request):
 
     request_body = handler.extract_dict_from_body(request)
 
-    disks.format_disk(request_body['name'])
+    if disks.format_disk(request_body['name']) is False:
+        return render('<h1>Error</h1>')
 
     return redirect('/disks/')
 
