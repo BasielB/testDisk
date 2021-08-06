@@ -24,11 +24,6 @@
                     <td>{{ disk.size }}</td>
                     <td>{{ disk.mount_point }}</td>
                     <td>
-                        <form action="{% url 'format' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="name" value="{{ disk.name }}">
-                            <button type="submit" value="{{ disk.name }}">Format</button>
-                        </form>
                         {% if disk.mount_point %}
                         <form action="{% url 'umount' %}" method="post">
                             {% csrf_token %}
@@ -36,6 +31,11 @@
                             <button type="submit">Umount</button>
                         </form>
                         {% else %}
+                        <form action="{% url 'format' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="name" value="{{ disk.name }}">
+                            <button type="submit" value="{{ disk.name }}">Format</button>
+                        </form>
                         <form action="{% url 'mount' %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="name" value="{{ disk.name }}">
