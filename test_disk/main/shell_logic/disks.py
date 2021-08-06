@@ -1,5 +1,6 @@
 import subprocess
 import os
+import config
 
 
 def get_all_disks():
@@ -43,7 +44,7 @@ def get_all_disks():
 
 
 def mount_disk(name: str):
-    sudo_password = 'butovich'
+    sudo_password = config.SUDO_PASSWORD
     command_mkdir = f'mkdir /mnt/{name}'
     command_mount = f'mount /dev/{name} /mnt/{name}'
 
@@ -56,14 +57,14 @@ def mount_disk(name: str):
 
 
 def umount_disk(name: str):
-    sudo_password = 'butovich'
+    sudo_password = config.SUDO_PASSWORD
     command_umount = f'umount /dev/{name}'
 
     os.system(f'echo {sudo_password}|sudo -S {command_umount}')
 
 
 def format_disk(name: str):
-    sudo_password = 'butovich'
+    sudo_password = config.SUDO_PASSWORD
     command_format = f'mkfs /dev/{name}'
 
     if os.system(f'echo {sudo_password}|sudo -S {command_format}') == 0:
