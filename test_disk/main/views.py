@@ -42,7 +42,7 @@ def format_disk(request):
     request_body = handler.extract_dict_from_body(request)
 
     if disks.format_disk(request_body['name']) is False:
-        return render(request, '<h1>Error</h1>')
+        return render(request, 'main/err_format.html')
 
     return redirect('/disks/')
 
