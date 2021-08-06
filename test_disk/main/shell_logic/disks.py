@@ -48,7 +48,11 @@ def mount_disk(name: str):
     command_mount = f'mount /dev/{name} /mnt/{name}'
 
     os.system(f'echo {sudo_password}|sudo -S {command_mkdir}')
-    os.system(f'echo {sudo_password}|sudo -S {command_mount}')
+
+    if os.system(f'echo {sudo_password}|sudo -S {command_mount}') == 0:
+        return True
+    else:
+        return False
 
 
 def umount_disk(name: str):

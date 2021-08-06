@@ -21,7 +21,8 @@ def mount_disk(request):
 
     request_body = handler.extract_dict_from_body(request)
 
-    disks.mount_disk(request_body['name'])
+    if disks.mount_disk(request_body['name']) is False:
+        return render(request, 'main/err_mount.html')
 
     return redirect('/disks/')
 
@@ -30,7 +31,6 @@ def mount_disk(request):
 def umount_disk(request):
 
     request_body = handler.extract_dict_from_body(request)
-
     disks.umount_disk(request_body['name'])
 
     return redirect('/disks/')
